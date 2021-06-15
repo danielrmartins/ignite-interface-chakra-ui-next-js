@@ -31,23 +31,23 @@ export function Pagination({ totalCountOfRegisters, registersPerPage = 10, curre
       <Stack direction="row" spacing="2">
         {currentPage > (1 + siblingsCount) && (
           <>
-            <PaginationItem number={1} />
+            <PaginationItem number={1} onPageChange={onPageChange} />
             {currentPage > (2 + siblingsCount) && <Text color="gray.300" width="8" textAlign="center">...</Text>}
           </>
         )}
 
         {previousPages.length > 0 && previousPages.map(page => (
-          <PaginationItem key={page} number={page} />
+          <PaginationItem key={page} number={page} onPageChange={onPageChange} />
         ))}
-        <PaginationItem isCurrent number={currentPage} />
+        <PaginationItem isCurrent number={currentPage} onPageChange={onPageChange} />
         {nextPages.length > 0 && nextPages.map(page => (
-          <PaginationItem key={page} number={page} />
+          <PaginationItem key={page} number={page} onPageChange={onPageChange} />
         ))}
 
         {(currentPage + siblingsCount) < lastPage && (
           <>
             {(currentPage + 1 + siblingsCount) < lastPage && <Text color="gray.300" width="8" textAlign="center">...</Text>}
-            <PaginationItem number={lastPage} />
+            <PaginationItem number={lastPage} onPageChange={onPageChange} />
           </>
         )}
       </Stack>
